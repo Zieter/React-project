@@ -1,0 +1,39 @@
+.navbar-collapse .navbar-nav li a {
+    position: relative;
+    padding-inline: 1rem;
+}
+
+.navbar-collapse .navbar-nav li a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    bottom: 0;
+    left: 50%;
+    border-bottom: 1px rgb(255, 255, 255) solid;
+}
+
+.navbar-collapse .navbar-nav li:hover a::after {
+    width: 100%;
+    box-shadow: 0px 2px 10px rgb(255 255 255),0px 2px 7px rgb(255, 201, 52);
+    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+    transform: translateX(-50%);
+}
+
+@media screen and (min-width: 992px) {
+    .navbar-collapse .navbar-nav > li {
+        margin-inline: 2rem;
+    }
+} 
+
+@media screen and (max-width: 992px) {
+    .navbar-collapse .navbar-nav > li {
+        font-size: larger;
+        margin-block: 0.5rem; ;
+    }
+
+    .navbar-collapse {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.895);
+    }
+} 

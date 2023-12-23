@@ -1,0 +1,3 @@
+.icon-container i:not(:last-child) {
+    margin-right: 10px; /* 添加右邊間隔 */
+}

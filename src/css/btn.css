@@ -1,0 +1,6 @@
+.btn_ScrollToTop i{
+    color: rgba(190, 190, 190, 0.546);
+}
+.btn_ScrollToTop i:hover {
+    color: rgb(255, 255, 255);
+}
