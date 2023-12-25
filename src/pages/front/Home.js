@@ -3,6 +3,7 @@ import FadeInOnScroll from '../../components/FadeInOnScroll';
 import '../../css/home.css';
 
 function Home() {
+    console.log(1243)
     return(<>
     <div className='w-100'>
             <div className='banner_video w-100' style={{position:'fixed', top:0, zIndex:0}}>
