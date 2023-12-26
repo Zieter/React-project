@@ -1,45 +1,60 @@
-.list_series {
-    /* border-bottom: 1px solid white; */
+.area_products a {
+    text-decoration: none;
 }
 
-.list_series li {
-    padding-block: 1rem;
-    text-align: center;
+.img_area_square {
+    aspect-ratio: 1/1;
 }
-
-.list_series li {
-    position: relative;
-    min-width: 8rem;
-    text-wrap: nowrap;
-    font-size: large;
-    font-weight: lighter;
-    cursor: pointer;
-    border: 1px rgba(255, 255, 255, 0.181) solid;
+.img_area_square img {
+    height: 100%;
 }
-
-.list_series li:first-child:after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 1px;
-    width: 100%;
-    /* border-bottom: 1px solid white; */
-    /* box-shadow: -15px 0px 14px 20px white; */
-}
-
-.list_series li:hover {
-    /* font-size: larger; */
-    font-weight:normal ;
-}
-
-
-@media screen and (max-width: 992px) {
-    .list_series {
-        /* justify-content:space-evenly; */
-        overflow-x: scroll;
+@media screen and (min-width: 992px) {
+    .product_anime {
+        position: relative;
+        perspective: 500px;
+        overflow: hidden;
+        transition: border-radius 0.5s ease, box-shadow 0.5s ease;
     }
-    .list_series li {
-        min-width: auto;
+    
+    .product_anime:hover {
+        box-shadow: inset 0px 0px 20px white;
+        border-radius: 50%;
+    }
+
+    .product_anime .effect_img_slop {
+        position: relative;
+        transition: transform 1s ease, filter 1s ease;
+        transform-origin: bottom;
+        aspect-ratio: 1;
+    }
+    
+    .product_anime:hover .effect_img_slop {
+        transform: rotateX(75deg);
+        filter:brightness(10%);
+    }
+
+    .product_anime:hover .effect_img_slop::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        transform: rotateX(75deg);
+        box-shadow: 1px 1px 1px white;
+    }
+
+    .product_anime .effect_img_float {
+        position: absolute;
+        top: 0;
+        left: -50%;
+        width: 100%;
+        opacity: 0;
+        transform: translate(50%, 100%) scale(0.8);
+        transition: transform 1s, opacity 1s ;
+        overflow: hidden;
+    }
+
+    .product_anime:hover .effect_img_float {
+        opacity: 1;
+        transform: translate(50%, 0%) scale(0.8);
     }
 } 

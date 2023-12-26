@@ -1,14 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import Pagination from '../../components/Pagination';
 import { Link } from 'react-router-dom';
 import Loading from '../../components/Loading';
 import '../../css/products.css';
+import Dropdown from '../../components/Dropdown';
 
 function Products() {
     const [products, setProducts] = useState([]);
     const [pagination, setPagination] = useState({});
     const [isLoading, setLoading] = useState(false);
+
     const getProducts = async (page = 1) => {
         setLoading(true)
         const productRes = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/products?page=${page}`);
@@ -23,34 +25,14 @@ function Products() {
     }, [])
 
     return (<>
-        <div className="container mt-md-5 mt-3 mb-7">
+        <div className="area_products container-fluid mt-md-5 mt-3 mb-7">
             <Loading isLoading={isLoading}/>
             <div>
 
             </div>
             <div className='row mb-5'>
                 <div className='col-12 col-lg-2'>
-                    <div className='dropdown'>
-                        <div className='dropdown-toggle' data-bs-toggle="dropdown" aria-expanded="false">
-                            MEN
-                            <ul className='dropdown-menu dropdown-menu-dark'>
-                                <li><a className="dropdown-item active" href="#">Automatic</a></li>
-                                <li><a className="dropdown-item" href="#">Manual</a></li>
-                                <li><a className="dropdown-item" href="#">Diving</a></li>
-                                <li><a className="dropdown-item" href="#">Smart</a></li>
-                                <li><a className="dropdown-item" href="#">Luxury</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <ul className='list_series list-unstyled'>
-                        <li>MEN</li>
-                        
-                        <li>LADY</li>
-                        <li>NEUTRAL</li>
-                        <li>COUPLE</li>
-                        
-                    </ul>
+                    <Dropdown />
                 </div>
                 
                 <div className='col-12 col-lg-10'>
@@ -58,14 +40,30 @@ function Products() {
                     {products.map((product) => {
                         return (
                             <div className="col-md-3" key={product.id}>
-                                <div className="card border-0 mb-4 position-relative position-relative">
-                                    <img src={product.imageUrl} className="card-img-top rounded-0 object-cover" height={300} alt="..." />
-                                    <div className="card-body p-0">
-                                        <h4 className="mb-0 mt-2"><Link to={`/product/${product.id}`}>{product.title}</Link></h4>
-                                        <p className="text-muted mt-1">NT$ {product.price}</p>
+                                <Link to={`/product/${product.id}`}>
+                                <div className="card border-0 mb-4 position-relative position-relative bg-transparent">
+                                <div
+                                    className='product_anime img_area_square'
+                                >
+                                        <img src={product.imageUrl} className="effect_img_slop card-img-top rounded-0 object-cover" height={300} alt="..." />
+                                        <img className='effect_img_float d-none d-lg-block' src={process.env.PUBLIC_URL + '/img/float_img.png'} alt="Second_Image" />
+                                    </div>
+                                    <div className="card-body d-flex">
+                                        <span className="mb-0">{product.title}</span>
+                                        <span className="ms-auto">NT$ {product.price}</span>
                                     </div>
                                 </div>
+                                </Link>
                             </div>
+                            // <div className="col-md-3" key={product.id}>
+                            //     <div className="card border-0 mb-4 position-relative position-relative">
+                            //         <img src={product.imageUrl} className="card-img-top rounded-0 object-cover" height={300} alt="..." />
+                            //         <div className="card-body p-0">
+                            //             <h4 className="mb-0 mt-2"><Link to={`/product/${product.id}`}>{product.title}</Link></h4>
+                            //             <p className="text-muted mt-1">NT$ {product.price}</p>
+                            //         </div>
+                            //     </div>
+                            // </div>
                         )
                     })}
                     </div>
