@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { MessageContext, handleSuccessMessage, handleErrorMessage } from '../pages/store/messageStore';
 
-function ProductModal({ closeProductModal, getProducts, type, tempProduct }) {//傳入fn
+function ProductModal({ closeProductModal, getProducts, type, tempProduct }) {
     const [tempData, setTempData] = useState({
         "title": "3",
         "category": "",
@@ -13,6 +13,7 @@ function ProductModal({ closeProductModal, getProducts, type, tempProduct }) {//
         "content": "",
         "is_enabled": 1,
         "imageUrl": "",
+        "imagesUrl": ["", "", "", "", ""]
     });
     const [, dispatch] = useContext(MessageContext)
 
@@ -30,18 +31,19 @@ function ProductModal({ closeProductModal, getProducts, type, tempProduct }) {//
                     "content": "",
                     "is_enabled": 1,
                     "imageUrl": "",
+                    "imagesUrl": ["", "", "", "", ""]
                 }
             )
         } else if (type === 'edit') {
             setTempData(tempProduct)
-            // console.log(type, tempProduct);
+            console.log(type, tempProduct);
         }
     }, [type, tempProduct]);
 
     const handleChange = (e) => {
-        console.log(e);
+        // console.log(e);
         const { value, name } = e.target;
-        if (['price', 'origin_price'].includes(name)) {//name裡面有包含price或origin_price時使用數字型別
+        if (['price', 'origin_price'].includes(name)) {
             setTempData({
                 ...tempData,
                 [name]:Number(value),
@@ -51,6 +53,16 @@ function ProductModal({ closeProductModal, getProducts, type, tempProduct }) {//
                 ...tempData,
                 [name]: +e.target.checked, //原會顯示boolean， 在前面使用+號會變數字
             })
+        } else if (name === 'imagesUrl') {
+            const index = parseInt(e.target.id.slice(-1), 10);
+            if (!Number.isNaN(index)) {
+                setTempData({
+                    ...tempData,
+                    imagesUrl: Array.isArray(tempData.imagesUrl)
+                        ? tempData.imagesUrl.map((url, i) => (i === index ? value : url))
+                        : ["", "", "", "", ""],
+                });
+            }
         } else {
             setTempData({
                 ...tempData,
@@ -73,7 +85,7 @@ function ProductModal({ closeProductModal, getProducts, type, tempProduct }) {//
                     data: tempData,
                 }
             );
-            console.log(tempData)
+            // console.log(tempData)
             handleSuccessMessage(dispatch, res);
             closeProductModal();
             getProducts();
@@ -118,6 +130,76 @@ function ProductModal({ closeProductModal, getProducts, type, tempProduct }) {//
                                                 className='form-control'
                                                 onChange={handleChange}
                                                 value={tempData.imageUrl}
+                                            />
+                                        </label>
+                                    </div>
+                                    <div className='form-group mb-2'>
+                                        <label className='w-100' htmlFor='image0'>
+                                            輸入圖片網址一
+                                            <input
+                                                type='text'
+                                                name='imagesUrl'
+                                                id='image0'
+                                                placeholder='請輸入圖片連結'
+                                                className='form-control'
+                                                onChange={handleChange}
+                                                value={tempData?.imagesUrl?.length > 1 ? tempData.imagesUrl[0] : ''}
+                                            />
+                                        </label>
+                                    </div>
+                                    <div className='form-group mb-2'>
+                                        <label className='w-100' htmlFor='image1'>
+                                            輸入圖片網址二
+                                            <input
+                                                type='text'
+                                                name='imagesUrl'
+                                                id='image1'
+                                                placeholder='請輸入圖片連結'
+                                                className='form-control'
+                                                onChange={handleChange}
+                                                value={tempData?.imagesUrl?.length > 1 ? tempData.imagesUrl[1] : ''}
+                                            />
+                                        </label>
+                                    </div>
+                                    <div className='form-group mb-2'>
+                                        <label className='w-100' htmlFor='image2'>
+                                            輸入圖片網址三
+                                            <input
+                                                type='text'
+                                                name='imagesUrl'
+                                                id='image2'
+                                                placeholder='請輸入圖片連結'
+                                                className='form-control'
+                                                onChange={handleChange}
+                                                value={tempData?.imagesUrl?.length > 1 ? tempData.imagesUrl[2] : ''}
+                                            />
+                                        </label>
+                                    </div>
+                                    <div className='form-group mb-2'>
+                                        <label className='w-100' htmlFor='image3'>
+                                            輸入圖片網址四
+                                            <input
+                                                type='text'
+                                                name='imagesUrl'
+                                                id='image3'
+                                                placeholder='請輸入圖片連結'
+                                                className='form-control'
+                                                onChange={handleChange}
+                                                value={tempData?.imagesUrl?.length > 1 ? tempData.imagesUrl[3] : ''}
+                                            />
+                                        </label>
+                                    </div>
+                                    <div className='form-group mb-2'>
+                                        <label className='w-100' htmlFor='image4'>
+                                            輸入圖片網址五
+                                            <input
+                                                type='text'
+                                                name='imagesUrl'
+                                                id='image4'
+                                                placeholder='請輸入圖片連結'
+                                                className='form-control'
+                                                onChange={handleChange}
+                                                value={tempData?.imagesUrl?.length > 1 ? tempData.imagesUrl[4] : ''}
                                             />
                                         </label>
                                     </div>
