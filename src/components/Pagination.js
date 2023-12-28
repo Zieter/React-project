@@ -1,3 +1,5 @@
+import '../css/pagination.css';
+
 function Pagination({pagination, changePage}) {
     return (
         <nav aria-label='Page navigation example'>

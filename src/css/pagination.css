@@ -1,0 +1,34 @@
+.product_pagination a {
+    background: none;
+    border: none;
+    font-size: large;
+}
+
+.product_pagination a.disabled {
+    background: none;
+    color: rgba(0, 0, 0, 0.752);
+}
+
+.product_pagination a.disabled span {
+    color: rgb(70, 70, 70);
+}
+
+.product_pagination a.active {
+    background: none;
+    color: rgb(83, 183, 192);
+}
+
+.product_pagination a.false {
+    color: rgba(255, 255, 255, 0.752);
+}
+
+.product_pagination a:hover {
+    background: none;
+    color: rgb(83, 183, 192);
+}
+
+.product_pagination a:focus-visible, .product_pagination a:focus{
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+}

@@ -46,11 +46,17 @@ function Products() {
                                     className='product_anime img_area_square'
                                 >
                                         <img src={product.imageUrl} className="effect_img_slop card-img-top rounded-0 object-cover" height={300} alt="..." />
-                                        <img className='effect_img_float d-none d-lg-block' src={process.env.PUBLIC_URL + '/img/float_img.png'} alt="Second_Image" />
+                                        {product.imagesUrl && product.imagesUrl[0] && (
+                                            <img
+                                                className='effect_img_float d-none d-lg-block'
+                                                src={product.imagesUrl[0]}
+                                                alt="First_Image"
+                                            />
+                                        )}
                                     </div>
                                     <div className="card-body d-flex">
                                         <span className="mb-0">{product.title}</span>
-                                        <span className="ms-auto">NT$ {product.price}</span>
+                                        <span className="ms-auto">NT$ {product.price.toLocaleString()}</span>
                                     </div>
                                 </div>
                                 </Link>
@@ -67,7 +73,7 @@ function Products() {
                         )
                     })}
                     </div>
-                        <nav className="d-flex justify-content-center">
+                    <nav className="d-flex justify-content-center product_pagination">
                         <Pagination 
                             pagination= {pagination}
                             changePage={getProducts} />
