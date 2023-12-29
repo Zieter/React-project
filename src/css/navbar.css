@@ -20,6 +20,13 @@
     box-shadow: 0px 2px 10px rgb(255 255 255),0px 2px 7px rgb(255, 201, 52);
 }
 
+.navbar_scroll_style {
+    background-color: rgb(0 0 0 / 62%);
+    backdrop-filter:blur(50px);
+    -webkit-backdrop-filter:blur(50px) ;
+    transition: background-color 0.5s, backdrop-filter 0.5s;
+}
+
 @media screen and (min-width: 992px) {
     .navbar-collapse .navbar-nav > li {
         margin-inline: 2rem;
