@@ -1,10 +1,26 @@
 import { NavLink } from 'react-router-dom';
 import '../css/navbar.css';
+import { useState, useEffect } from 'react';
 
 function Navbar({ cartData }) {
+    const [showNavbarBg, setShowNavbarBg] = useState(false)
+    const handNavbarBg = () => {
+        if(window.scrollY > 100) {
+            setShowNavbarBg(true);
+        } else {
+            setShowNavbarBg(false);
+        }
+    }
+    useEffect(() => {
+        window.addEventListener('scroll', handNavbarBg);
+        return () => {
+            window.removeEventListener('scroll', handNavbarBg);
+        };
+    }, []);
+    
     return (<>
-    <div className='sticky-top' style={{background:'transparent'}}>
-            <div className='w-100 px-5 row position-relative'>
+    <div className={`sticky-top ${showNavbarBg ? 'navbar_scroll_style' : ''}`} >
+            <div className='w-100 px-3 px-sm-5 row position-relative'>
                 <NavLink className='navbar-brand d-none d-lg-flex text-light col-auto m-0 my-auto me-auto' to='/'  >
                     <img src={process.env.PUBLIC_URL + '/logo/watch_logo.png'} alt="/" className="" style={{height:50, width:50}} />
                 </NavLink>
