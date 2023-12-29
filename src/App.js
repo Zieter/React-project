@@ -7,6 +7,7 @@ import AdnminOrders from './pages/admin/AdminOrders';
 import FrontLayout from './pages/front/FrontLayout';
 import Home from './pages/front/Home';
 import Products from './pages/front/Products';
+import Business from './pages/front/Business';
 import ProductDetail from './pages/front/ProductDetail';
 import Cart from './pages/front/Cart';
 import Checkout from './pages/front/Checkout';
@@ -20,6 +21,7 @@ function App() {
           <Route path="" element={<Home/>}></Route>
           <Route path="products" element={<Products/>}></Route>
           <Route path="product/:id" element={<ProductDetail/>}></Route>
+          <Route path="business" element={<Business/>}></Route>
           <Route path="cart" element={<Cart/>}></Route>
           <Route path="checkout" element={<Checkout/>}></Route>
           <Route path="success/:orderId" element={<Success/>}></Route>

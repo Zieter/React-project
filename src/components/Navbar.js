@@ -26,7 +26,7 @@ function Navbar({ cartData }) {
                                     </NavLink>
                                 </li>
                                 <li className='nav-item active'>
-                                    <NavLink className='nav-link text-light' to='/products'>
+                                    <NavLink className='nav-link text-light' to='/business'>
                                         Business
                                     </NavLink>
                                 </li>
