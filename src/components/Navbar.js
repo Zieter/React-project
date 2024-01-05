@@ -37,18 +37,18 @@ function Navbar({ cartData }) {
                                     </NavLink>
                                 </li>
                                 <li className='nav-item active'>
+                                    <NavLink className='nav-link text-light' to='/news'>
+                                        News
+                                    </NavLink>
+                                </li>
+                                <li className='nav-item active'>
                                     <NavLink className='nav-link text-light' to='/products'>
                                         Products
                                     </NavLink>
                                 </li>
                                 <li className='nav-item active'>
-                                    <NavLink className='nav-link text-light' to='/business'>
-                                        Business
-                                    </NavLink>
-                                </li>
-                                <li className='nav-item active'>
-                                    <NavLink className='nav-link text-light' to='/products'>
-                                        Connection
+                                    <NavLink className='nav-link text-light' to='/ContactUs'>
+                                    ContactUs
                                     </NavLink>
                                 </li>
                             </ul>

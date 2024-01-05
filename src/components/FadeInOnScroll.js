@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer';
 
 const ScrollFadeIn = ({ children }) => {
     const [ref, inView] = useInView({
-        triggerOnce: true,
+        triggerOnce: '',
         threshold: 0.5,
     });
 
