@@ -6,8 +6,9 @@ import AdnminCoupons from './pages/admin/AdminCoupons';
 import AdnminOrders from './pages/admin/AdminOrders';
 import FrontLayout from './pages/front/FrontLayout';
 import Home from './pages/front/Home';
+import News from './pages/front/News';
 import Products from './pages/front/Products';
-import Business from './pages/front/Business';
+import ContactUs from './pages/front/ContactUs';
 import ProductDetail from './pages/front/ProductDetail';
 import Cart from './pages/front/Cart';
 import Checkout from './pages/front/Checkout';
@@ -19,9 +20,10 @@ function App() {
       <Routes>
         <Route path="/" element={<FrontLayout/>}>
           <Route path="" element={<Home/>}></Route>
+          <Route path='News' element={<News />}></Route>
           <Route path="products" element={<Products/>}></Route>
           <Route path="product/:id" element={<ProductDetail/>}></Route>
-          <Route path="business" element={<Business/>}></Route>
+          <Route path="ContactUs" element={<ContactUs/>}></Route>
           <Route path="cart" element={<Cart/>}></Route>
           <Route path="checkout" element={<Checkout/>}></Route>
           <Route path="success/:orderId" element={<Success/>}></Route>

@@ -73,9 +73,9 @@ function ProductModal({ closeProductModal, getProducts, type, tempProduct }) {
 
     const submit = async () => {
         try {
-            let api = `/v2/api/${process.env.REACT_APP_API_PATH}/admin/product`; //新增type提交時使用預設api
+            let api = `/v2/api/${process.env.REACT_APP_API_PATH}/admin/product`;
             let method = 'post';
-            if (type ==='edit') {//編輯type提交時使用其他api
+            if (type ==='edit') {
                 api = `/v2/api/${process.env.REACT_APP_API_PATH}/admin/product/${tempProduct.id}`;
                 method = 'put';
             }

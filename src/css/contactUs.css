@@ -1,0 +1,65 @@
+select ,select > option {
+    background-color: transparent;
+}
+
+.input_style {
+    background-color: transparent;
+    border: 1px rgba(255, 255, 255, 0.414) solid;
+    border-radius: 2rem;
+    padding-inline: 1rem;
+    width: 100%;
+}
+
+input:focus, .textarea_style:focus {
+    background-color: rgba(0, 0, 0, 0.345);
+}
+
+.textarea_style {
+    background-color: transparent;
+    border: 1px rgba(255, 255, 255, 0.414) solid;
+    resize: none;
+}
+
+.label_style {
+    width: 100%;
+    margin-bottom: 0.2rem;
+}
+
+input[type="radio"] {
+    margin-block: auto;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    outline: none;
+    margin-right: 5px;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+input[type="radio"]:checked {
+    background-color: transparent;
+    position: relative;
+}
+
+input[type="radio"]:checked::after{
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-color: #34f2d591;
+}
+
+label {
+    cursor: pointer;
+}
+select option {
+    color: black;
+}
